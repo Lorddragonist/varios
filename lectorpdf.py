@@ -30,4 +30,6 @@ comentarios_extraidos = extraer_comentarios(pdf_path)
 # Imprimir los comentarios extraídos
 for comentario in comentarios_extraidos:
     print(comentario)
+    
+# PyPDF2.errors.DeprecationError: PdfFileReader is deprecated and was removed in PyPDF2 3.0.0. Use PdfReader instead.
 
