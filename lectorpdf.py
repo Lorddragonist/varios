@@ -65,3 +65,26 @@ for comentario in comentarios_extraidos:
 
     
 # AttributeError: 'PageObject' object has no attribute 'annots'
+
+import PyPDF2
+
+def extraer_comentarios(pdf_path):
+    comentarios = []
+    
+    with open(pdf_path, 'rb') as file:
+        reader = PyPDF2.PdfFileReader(file)
+        num_paginas = reader.getNumPages()
+        
+        for i in range(num_paginas):
+            pagina = reader.getPage(i)
+            comentarios_pagina = pagina.extractText()
+            
+            if '/Annots' in pagina:
+                anotaciones = pagina['/Annots']
+                
+                for anotacion in anotaciones:
+                    anotacion_objeto = anotacion.getObject()
+                    if anotacion_objeto['/Subtype'] == '/Text':
+                        comentario = anotacion_objeto['/Contents']
+                        comentarios.append(comentario)
+    
