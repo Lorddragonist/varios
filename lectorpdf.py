@@ -62,3 +62,6 @@ comentarios_extraidos = extraer_comentarios(pdf_path)
 # Imprimir los comentarios extraídos
 for comentario in comentarios_extraidos:
     print(comentario)
+
+    
+# AttributeError: 'PageObject' object has no attribute 'annots'
